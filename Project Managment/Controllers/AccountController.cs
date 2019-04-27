@@ -17,9 +17,11 @@ namespace Project_Managment.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        ApplicationDbContext db = new ApplicationDbContext();
 
         public AccountController()
         {
+            db = new ApplicationDbContext();
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
@@ -139,6 +141,7 @@ namespace Project_Managment.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            ViewBag.UserType = new SelectList(db.Roles, "Name", "Name");
             return View();
         }
 
@@ -151,7 +154,10 @@ namespace Project_Managment.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                ViewBag.UserType = new SelectList(db.Roles, "Name", "Name");
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email , FName = model.FName ,
+                LName = model.LName  , PhoneNumber = model.PhoneNumber , JDescription = model.JDescription ,
+                    UserType = model.UserType   };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

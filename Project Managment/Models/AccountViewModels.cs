@@ -65,6 +65,27 @@ namespace Project_Managment.Models
     public class RegisterViewModel
     {
         [Required]
+        [Display(Name = "First Name")]
+        public string FName { get; set; }
+
+        [Required]
+        [Display(Name = "Last Name")]
+        public string LName { get; set; }
+
+        [Required]
+        [Display(Name = "Mobile")]
+        public string PhoneNumber { get; set; }
+
+        [Required]
+        [Display(Name = "Job Description")]
+        public string JDescription { get; set; }
+
+        [Required]
+        [Display(Name = "Account Type")]
+        public string UserType { get; set; }
+
+
+        [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
