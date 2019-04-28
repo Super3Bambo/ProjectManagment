@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Web;
 
 namespace Project_Managment.Models
 {
@@ -69,8 +70,14 @@ namespace Project_Managment.Models
         public string FName { get; set; }
 
         [Required]
+        [Display(Name = "Profile Photo")]
+        public string Photo { get; set; }
+
+
+        [Required]
         [Display(Name = "Last Name")]
         public string LName { get; set; }
+
 
         [Required]
         [Display(Name = "Mobile")]

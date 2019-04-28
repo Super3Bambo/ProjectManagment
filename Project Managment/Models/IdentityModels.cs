@@ -13,6 +13,8 @@ namespace Project_Managment.Models
         public string LName { get;  set; }
         public string UserType { get;  set; }
         public string JDescription { get;  set; }
+        public string Photo { get; set; }
+
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

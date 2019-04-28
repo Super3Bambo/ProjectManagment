@@ -202,6 +202,14 @@
     <Compile Include="Migrations\201904251728531_EditRegister8.Designer.cs">
       <DependentUpon>201904251728531_EditRegister8.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201904271014375_addphoto.cs" />
+    <Compile Include="Migrations\201904271014375_addphoto.Designer.cs">
+      <DependentUpon>201904271014375_addphoto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904271034308_addphoto2.cs" />
+    <Compile Include="Migrations\201904271034308_addphoto2.Designer.cs">
+      <DependentUpon>201904271034308_addphoto2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -273,6 +281,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Uploads\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -309,6 +318,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201904251728531_EditRegister8.resx">
       <DependentUpon>201904251728531_EditRegister8.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904271014375_addphoto.resx">
+      <DependentUpon>201904271014375_addphoto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904271034308_addphoto2.resx">
+      <DependentUpon>201904271034308_addphoto2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

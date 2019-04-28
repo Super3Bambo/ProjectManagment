@@ -9,6 +9,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Project_Managment.Models;
+using System.IO;
+using System.Web.UI.WebControls;
 
 namespace Project_Managment.Controllers
 {
@@ -150,14 +152,23 @@ namespace Project_Managment.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model)
+        public async Task<ActionResult> Register(RegisterViewModel model , HttpPostedFileBase upload)
         {
             if (ModelState.IsValid)
             {
-                ViewBag.UserType = new SelectList(db.Roles, "Name", "Name");
+
+                    string path = Path.Combine(Server.MapPath("~/Uploads/") , upload.FileName);
+                    upload.SaveAs(path);
+                    model.Photo = upload.FileName;
+
+
+                    ViewBag.UserType = new SelectList(db.Roles, "Name", "Name");
+
+
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email , FName = model.FName ,
                 LName = model.LName  , PhoneNumber = model.PhoneNumber , JDescription = model.JDescription ,
-                    UserType = model.UserType   };
+                    UserType = model.UserType  };
+
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -173,7 +184,11 @@ namespace Project_Managment.Controllers
                 }
                 AddErrors(result);
             }
+            else {
+                ViewBag.UserType = new SelectList(db.Roles, "Name", "Name");
 
+                return View(model);
+            }
             // If we got this far, something failed, redisplay form
             return View(model);
         }
